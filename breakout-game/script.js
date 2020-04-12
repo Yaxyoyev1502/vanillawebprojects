@@ -68,7 +68,7 @@ function drawPaddle() {
   ctx.closePath();
 }
 
-// Draw score oon canvas
+// Draw score on canvas
 function drawScore() {
   ctx.font = '20px Arial';
   ctx.fillText(`Score: ${score}`, canvas.width - 100, 30);
@@ -132,8 +132,8 @@ function moveBall() {
     column.forEach(brick => {
       if (brick.visible) {
         if (
-          ball.x - ball.size > brick.x && // left brick side check
-          ball.x + ball.size < brick.x + brick.w && // right brick side check
+          ball.x + ball.size > brick.x && // left brick side check
+          ball.x - ball.size < brick.x + brick.w && // right brick side check
           ball.y + ball.size > brick.y && // top brick side check
           ball.y - ball.size < brick.y + brick.h // bottom brick side check
         ) {
@@ -157,7 +157,7 @@ function moveBall() {
 function increaseScore() {
   score++;
 
-  if (score % (brickRowCount * brickRowCount) === 0) {
+  if (score % (brickRowCount * brickColumnCount) === 0) {
     showAllBricks();
   }
 }
